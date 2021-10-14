@@ -42,7 +42,7 @@ class Deck:
 
         Takes cards in a dictionary format of term: definition"""
 
-        for term, definition in cards.keys():
+        for term, definition in cards.items():
             self.add_card(term, definition)
 
     def remove_card(self, term: str, allow_missing: bool = False) -> None:
