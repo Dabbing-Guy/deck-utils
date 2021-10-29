@@ -11,6 +11,7 @@ def deck_from_file(path: Path) -> Deck:
     
 
 def get_deck_files(deck_dir: Path) -> list[Path]:
+    """Returns a list with paths to all .deck files in a dir"""
     decks: list[Path] = [] # Contains paths of decks
     for file in deck_dir.iterdir():
         if file.name.endswith("deck"):
