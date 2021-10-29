@@ -1,4 +1,5 @@
 import exceptions
+import random
 
 
 class Deck:
@@ -56,6 +57,20 @@ class Deck:
 
         raise exceptions.CardDoesNotExist(term)
         return
+
+    def get_random_card(self) -> tuple[str, str]:
+        """Returns a random card in a tuple
+
+        term: [0]
+        definition: [1]"""
+
+        # Get the card terms into a list
+        terms: list[str] = list(self._cards.keys())
+        # Chose a random one
+        term: str = random.choice(terms)
+        definition = self._cards[term]
+
+        return (term, definition)
 
     def _sanitize_card_dictlist(self, cards: list[list[str]]) -> list[list[str]]:
         """Takes in a list of lists of card pairs and removes invalid card pairs
