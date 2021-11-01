@@ -72,6 +72,21 @@ class Deck:
 
         return (term, definition)
 
+    def get_random_term(self) -> str:
+        """Returns a random term from this deck"""
+        # Get the card terms into a list
+        terms: list[str] = list(self._cards.keys())
+        # Chose a random one
+        return random.choice(terms)
+
+    def get_random_definition(self) -> str:
+        """Returns a random definition from this deck"""
+        # Get the defintions
+        defs: list[str] = list(self._cards.values())
+        # Chose a random one
+        return random.choice(defs)
+
+
     def _sanitize_card_dictlist(self, cards: list[list[str]]) -> list[list[str]]:
         """Takes in a list of lists of card pairs and removes invalid card pairs
 
