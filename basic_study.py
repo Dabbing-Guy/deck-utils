@@ -55,6 +55,7 @@ def basic_study_match(deck: Deck) -> None:
         given_answer: int = int(t)
     except ValueError:
         print(f"Incorrect! {t} is not a number!")
+        return
 
     # Compare answers
     if (given_answer - 1) == answer_location:
