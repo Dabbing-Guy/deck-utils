@@ -8,7 +8,20 @@ def basic_study_type(deck: Deck) -> None:
     """Study a deck by typing the term that matches the definition
     
     deck: the deck that will be studied"""
-    pass
+
+    card: tuple[str, str] = deck.get_random_card()
+    print(card[1])  # Print the defintion
+
+    # Get the user to type the term
+    attempt: str = input("\nType the term: ")
+
+    # If the user typed the correct term
+    if attempt == card[0]:
+        print("Correct! Good job!\n")
+        return
+    
+    print(f"Incorrect. The correct answer is {card[0]}\n")
+    return
 
 
 def basic_study_match(deck: Deck) -> None:
@@ -75,7 +88,7 @@ def main():
 
     try:
         while True:
-            basic_study_match(deck)
+            basic_study_type(deck)
     except KeyboardInterrupt:
         exit(0)
 
