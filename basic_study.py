@@ -81,16 +81,45 @@ def basic_study_match(deck: Deck) -> None:
 
 def main():
     # Get the deck that should be used
-    print
     deck_dir = deckutils.get_decks_location()
     deck = deckutils.select_deck(deck_dir)
     print('\n')
 
-    try:
-        while True:
-            basic_study_type(deck)
-    except KeyboardInterrupt:
-        exit(0)
+    # Get the study type
+    study_type: str 
+    print("""What type of studying do you want to do?
+    1. Spelling
+    2. Matching""")
+
+    # Check
+    while True:
+        t = input("Enter the number that you want: ")
+        try: 
+            d = int(t)
+        except ValueError:
+            print(f"{t} is not an integer!")
+            continue
+        if d == 1:
+            study_type = "typing"
+            break
+        elif d == 2:
+            study_type = "matching"
+            break
+        print("Out of range. Try again.")
+        continue
+
+    if study_type == "typing":
+        try:
+            while True:
+                basic_study_type(deck)
+        except KeyboardInterrupt:
+            exit(0)
+    if study_type == "matching":
+        try:
+            while True:
+                basic_study_match(deck)
+        except KeyboardInterrupt:
+            exit(0)
 
 
 if __name__ == "__main__":
