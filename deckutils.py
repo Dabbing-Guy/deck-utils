@@ -8,7 +8,7 @@ from typing import Literal, Union
 
 def deck_from_file(path: Path) -> Deck:
     """This fuction makes a deck from data in file at path"""
-    with path.open('r') as file:
+    with path.open('r', encoding="utf-8") as file:
         return Deck(file.read())
     
 
