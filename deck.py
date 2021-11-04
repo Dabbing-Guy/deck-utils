@@ -86,8 +86,8 @@ class Deck:
         # Chose a random one
         return random.choice(defs)
 
-
-    def _sanitize_card_dictlist(self, cards: list[list[str]]) -> list[list[str]]:
+    def _sanitize_card_dictlist(self,
+                                cards: list[list[str]]) -> list[list[str]]:
         """Takes in a list of lists of card pairs and removes invalid card pairs
 
         This is importent so that when it is passed to dict(), dict does not raise error."""

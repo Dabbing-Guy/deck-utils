@@ -13,13 +13,13 @@ def basic_study_type(deck: Deck) -> None:
     print(card[1])  # Print the defintion
 
     # Get the user to type the term
-    attempt: str = input("\nType the term: ")
+    attempt: str = input("\nType the term: ").rstrip()
 
     # If the user typed the correct term
     if attempt == card[0]:
         print("Correct! Good job!\n")
         return
-    
+
     print(f"Incorrect. The correct answer is {card[0]}\n")
     return
 
@@ -63,7 +63,7 @@ def basic_study_match(deck: Deck) -> None:
         print(f"{choice_location + 1}. {choices[choice_location]}")
 
     # Get the answer from the user
-    t = input("Enter the number for the answer: ")
+    t = input("Enter the number for the answer: ").rstrip()
     try:
         given_answer: int = int(t)
     except ValueError:
@@ -86,7 +86,7 @@ def main():
     print('\n')
 
     # Get the study type
-    study_type: str 
+    study_type: str
     print("""What type of studying do you want to do?
     1. Spelling
     2. Matching""")
@@ -94,7 +94,7 @@ def main():
     # Check
     while True:
         t = input("Enter the number that you want: ")
-        try: 
+        try:
             d = int(t)
         except ValueError:
             print(f"{t} is not an integer!")
