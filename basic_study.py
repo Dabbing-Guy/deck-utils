@@ -13,7 +13,7 @@ def basic_study_type(deck: Deck) -> None:
     print(card[1])  # Print the defintion
 
     # Get the user to type the term
-    attempt: str = input("\nType the term: ").rstrip()
+    attempt: str = input("Type the term: ").rstrip()
 
     # If the user typed the correct term
     if attempt == card[0]:
@@ -40,7 +40,6 @@ def basic_study_match(deck: Deck) -> None:
 
     card = deck.get_random_card()
     print(card[1])  # Print the defintion
-    print('\n')
     answer: str = card[0]  # Answer is term
 
     # Populate choices with some fake awnsers
@@ -108,6 +107,7 @@ def main():
         print("Out of range. Try again.")
         continue
 
+    print()
     if study_type == "typing":
         try:
             while True:
