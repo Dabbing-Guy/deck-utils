@@ -2,6 +2,10 @@ import deckutils
 from pathlib import Path
 from deck import Deck
 import random
+import colorama
+from colorama import Fore as ForeColor
+
+colorama.init(autoreset=True)
 
 
 def basic_study_type(deck: Deck) -> None:
@@ -13,14 +17,14 @@ def basic_study_type(deck: Deck) -> None:
     print(card[1])  # Print the defintion
 
     # Get the user to type the term
-    attempt: str = input("Type the term: ").rstrip()
+    attempt: str = input(ForeColor.CYAN + "Type the term: ").rstrip()
 
     # If the user typed the correct term
     if attempt == card[0]:
-        print("Correct! Good job!\n")
+        print(ForeColor.GREEN + "Correct! Good job!\n")
         return
 
-    print(f"Incorrect. The correct answer is {card[0]}\n")
+    print(ForeColor.RED + f"Incorrect. The correct answer is {card[0]}\n")
     return
 
 
@@ -39,7 +43,7 @@ def basic_study_match(deck: Deck) -> None:
     assert AMOUNT_OF_CHOICES > 0
 
     card = deck.get_random_card()
-    print(card[1])  # Print the defintion
+    print(ForeColor.YELLOW + card[1])  # Print the defintion
     answer: str = card[0]  # Answer is term
 
     # Populate choices with some fake awnsers
@@ -62,19 +66,19 @@ def basic_study_match(deck: Deck) -> None:
         print(f"{choice_location + 1}. {choices[choice_location]}")
 
     # Get the answer from the user
-    t = input("Enter the number for the answer: ").rstrip()
+    t = input(ForeColor.CYAN + "Enter the number for the answer: ").rstrip()
     try:
         given_answer: int = int(t)
     except ValueError:
-        print(f"Incorrect! {t} is not a number!")
+        print(ForeColor.RED + f"Incorrect! {t} is not a number!\n")
         return
 
     # Compare answers
     if (given_answer - 1) == answer_location:
-        print("Correct! Good job!\n")
+        print(ForeColor.GREEN + "Correct! Good job!\n")
         return
 
-    print(f"Incorrect. The correct answer is {answer}\n")
+    print(ForeColor.RED + f"Incorrect. The correct answer is {answer}\n")
     return
 
 
@@ -92,11 +96,11 @@ def main():
 
     # Check
     while True:
-        t = input("Enter the number that you want: ")
+        t = input(ForeColor.CYAN + "Enter the number that you want: ")
         try:
             d = int(t)
         except ValueError:
-            print(f"{t} is not an integer!")
+            print(ForeColor.RED + f"{t} is not an integer!")
             continue
         if d == 1:
             study_type = "typing"
@@ -104,7 +108,7 @@ def main():
         elif d == 2:
             study_type = "matching"
             break
-        print("Out of range. Try again.")
+        print(ForeColor.RED + "Out of range. Try again.")
         continue
 
     print()

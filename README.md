@@ -12,3 +12,9 @@ Goals
 3. Study by matching term to definition and definiton to term
 4. Study by spelling term based off of definiton
 
+Requirements
+====
+
+These can simply be installed with pip
+
+- colorama
