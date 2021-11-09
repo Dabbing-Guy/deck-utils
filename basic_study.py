@@ -2,7 +2,7 @@ import deckutils
 from pathlib import Path
 from deck import Deck
 import random
-from getch import getch
+from _getch import getch
 import colorama
 from colorama import Fore as ForeColor
 
