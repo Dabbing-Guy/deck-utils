@@ -2,6 +2,7 @@ import deckutils
 from pathlib import Path
 from deck import Deck
 import random
+from getch import getch
 import colorama
 from colorama import Fore as ForeColor
 
@@ -66,19 +67,24 @@ def basic_study_match(deck: Deck) -> None:
         print(f"{choice_location + 1}. {choices[choice_location]}")
 
     # Get the answer from the user
-    t = input(ForeColor.CYAN + "Enter the number for the answer: ").rstrip()
+    print(ForeColor.CYAN + "Enter the number for the answer: ", end='')
+
+    t = getch()
+    # if q is typed, quit
+    if t.lower() == 'q': exit(0)
     try:
         given_answer: int = int(t)
     except ValueError:
-        print(ForeColor.RED + f"Incorrect! {t} is not a number!\n")
+        print('\n' + ForeColor.RED + f"Incorrect! '{t}' is not a number!\n")
         return
 
     # Compare answers
     if (given_answer - 1) == answer_location:
-        print(ForeColor.GREEN + "Correct! Good job!\n")
+        print('\n' + ForeColor.GREEN + "Correct! Good job!\n")
         return
 
-    print(ForeColor.RED + f"Incorrect. The correct answer is {answer}\n")
+    print('\n' + ForeColor.RED +
+          f"Incorrect. The correct answer is {answer}\n")
     return
 
 
@@ -96,11 +102,12 @@ def main():
 
     # Check
     while True:
-        t = input(ForeColor.CYAN + "Enter the number that you want: ")
+        print(ForeColor.CYAN + "Enter the number that you want: ")
+        t = getch()
         try:
             d = int(t)
         except ValueError:
-            print(ForeColor.RED + f"{t} is not an integer!")
+            print('\n' + ForeColor.RED + f"{t} is not an integer!")
             continue
         if d == 1:
             study_type = "typing"
@@ -108,10 +115,10 @@ def main():
         elif d == 2:
             study_type = "matching"
             break
-        print(ForeColor.RED + "Out of range. Try again.")
+        print('\n' + ForeColor.RED + "Out of range. Try again.")
         continue
 
-    print()
+    print('\n')
     if study_type == "typing":
         try:
             while True:
@@ -119,11 +126,8 @@ def main():
         except KeyboardInterrupt:
             exit(0)
     if study_type == "matching":
-        try:
-            while True:
-                basic_study_match(deck)
-        except KeyboardInterrupt:
-            exit(0)
+        while True:
+            basic_study_match(deck)
 
 
 if __name__ == "__main__":
