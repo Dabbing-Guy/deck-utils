@@ -152,3 +152,14 @@ def check_path(path: Path) -> bool:
 
     # Passed all tests
     return True
+
+
+def extract_answers(string: str) -> list[str]:
+    """"Takes a string and parses it to find all answers using deck syntax
+    This function currently only implements / operator"""
+    answers: list[str]
+
+    # Split over / operator
+    answers = string.split("/")
+
+    return answers

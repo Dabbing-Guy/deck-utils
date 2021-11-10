@@ -17,11 +17,14 @@ def basic_study_type(deck: Deck) -> None:
     card: tuple[str, str] = deck.get_random_card()
     print(card[1])  # Print the defintion
 
+    # Figure out possible answers
+    answers: list[str] = deckutils.extract_answers(card[0])
+
     # Get the user to type the term
     attempt: str = input(ForeColor.CYAN + "Type the term: ").rstrip()
 
     # If the user typed the correct term
-    if attempt == card[0]:
+    if attempt in answers:
         print(ForeColor.GREEN + "Correct! Good job!\n")
         return
 
