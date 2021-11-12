@@ -73,21 +73,23 @@ def basic_study_match(deck: Deck) -> None:
     print(ForeColor.CYAN + "Enter the number for the answer: ", end='')
 
     t = getch()
+    print(ForeColor.MAGENTA + t.decode("utf-8"))
     # if q is typed, quit
-    if t.lower() == 'q': exit(0)
+    if t.decode("utf-8").lower() == 'q': exit(0)
     try:
         given_answer: int = int(t)
     except ValueError:
-        print('\n' + ForeColor.RED + f"Incorrect! '{t}' is not a number!\n")
+        t = t.decode("utf-8")
+        print(ForeColor.RED + f"Incorrect! '{t}' is not a number!\n")
         return
 
     # Compare answers
     if (given_answer - 1) == answer_location:
-        print('\n' + ForeColor.GREEN + "Correct! Good job!\n")
+        print(ForeColor.GREEN +
+              f"Correct! {card[0]} means {card[1]}. Good job!\n")
         return
 
-    print('\n' + ForeColor.RED +
-          f"Incorrect. The correct answer is {answer}\n")
+    print(ForeColor.RED + f"Incorrect. The correct answer is {answer}\n")
     return
 
 
@@ -105,12 +107,13 @@ def main():
 
     # Check
     while True:
-        print(ForeColor.CYAN + "Enter the number that you want: ")
+        print(ForeColor.CYAN + "Enter the number that you want: ", end='')
         t = getch()
+        print(ForeColor.MAGENTA + t.decode("utf-8"))
         try:
             d = int(t)
         except ValueError:
-            print('\n' + ForeColor.RED + f"{t} is not an integer!")
+            print(ForeColor.RED + f"{t} is not an integer!")
             continue
         if d == 1:
             study_type = "typing"
